@@ -1,0 +1,131 @@
+.section {
+  padding: 86px 24px;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.underline {
+  width: 56px;
+  height: 2px;
+  background: rgba(77, 255, 196, 0.85);
+  margin: 10px auto 48px;
+  border-radius: 999px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.about-media {
+  border-radius: 16px;
+  height: 310px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 26px 72px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(77, 255, 196, 0.06) 0%, transparent 60%);
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95;
+}
+
+.about-image-fallback {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(100% 120% at 20% 5%, rgba(56, 130, 255, 0.35), rgba(0, 0, 0, 0) 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.about-content {
+  padding-top: 8px;
+}
+
+.lead {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0 0 16px;
+}
+
+.features {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(77, 255, 196, 0.08);
+  border: 1px solid rgba(77, 255, 196, 0.16);
+  color: rgba(77, 255, 196, 0.9);
+
+  lucide-icon {
+    display: flex;
+  }
+}
+
+.feature-text {
+  line-height: 1.5;
+}
+
+@media (max-width: 920px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .about-media {
+    height: 260px;
+  }
+
+  .section {
+    padding: 70px 18px;
+  }
+}

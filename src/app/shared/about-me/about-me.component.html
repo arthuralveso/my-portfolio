@@ -1,0 +1,46 @@
+<section class="section bg-slate-900">
+  <div class="container">
+    <h2 class="section-title">{{ title }}</h2>
+    <div class="underline" aria-hidden="true"></div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="flex justify-center lg:justify-start">
+        <div class="relative">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-[color:var(--chart-2)] to-[color:var(--chart-4)] rounded-3xl blur-2xl opacity-20"
+          ></div>
+
+          <div
+            class="relative bg-[color:rgba(15,23,42,0.5)] backdrop-blur-sm p-2 rounded-3xl border border-[color:rgba(71,85,105,0.5)] shadow-2xl"
+          >
+            <ng-container *ngIf="aboutImageUrl; else fallback">
+              <img
+                class="relative about-image rounded-2xl"
+                [src]="aboutImageUrl"
+                alt="About image"
+                loading="lazy"
+              />
+            </ng-container>
+            <ng-template #fallback>
+              <div class="about-image-fallback"></div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <p class="lead">{{ lead1 }}</p>
+        <p class="lead">{{ lead2 }}</p>
+
+        <div class="features" aria-label="Key highlights">
+          <div class="feature" *ngFor="let f of features">
+            <span class="feature-icon" aria-hidden="true">
+              <lucide-icon [img]="f.icon" [size]="16" color="rgb(52 211 153)"></lucide-icon>
+            </span>
+            <span class="feature-text">{{ f.text }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

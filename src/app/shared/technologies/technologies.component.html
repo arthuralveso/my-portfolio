@@ -1,0 +1,20 @@
+<section class="section bg-gradient-to-b from-slate-900 to-slate-950">
+  <div class="container">
+    <h2 class="section-title">{{ title }}</h2>
+    <div class="underline" aria-hidden="true"></div>
+    <p class="subtitle">{{ subtitle }}</p>
+
+    <div class="tech-grid" aria-label="Technologies and tools">
+      <div class="tech-card" *ngFor="let tech of technologies; trackBy: trackByName">
+        <div class="tech-icon" aria-hidden="true" [style.backgroundColor]="tech.bg">
+          @if (tech.svgUrl) {
+            <img [src]="tech.svgUrl" style="width: 2rem; height: 2rem" />
+          } @else {
+            <i [class]="tech.icon + ' colored'" style="font-size: 2rem"></i>
+          }
+        </div>
+        <div class="tech-name">{{ tech.name }}</div>
+      </div>
+    </div>
+  </div>
+</section>
