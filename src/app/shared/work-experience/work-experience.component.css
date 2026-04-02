@@ -1,0 +1,213 @@
+.section {
+  padding: 86px 24px 100px;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+}
+
+/* ── Timeline layout ─────────────────────────────────────── */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 20px;
+  position: relative;
+}
+
+.timeline-item:last-child .timeline-line {
+  display: none;
+}
+
+/* ── Marker (dot + line) ─────────────────────────────────── */
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgb(52, 211, 153);
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.12);
+  border: 2px solid rgba(71, 85, 105, 0.6);
+  flex-shrink: 0;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+  position: absolute;
+  top: 10px;
+  left: 40%;
+  z-index: 1;
+}
+
+.timeline-line {
+  flex: 1;
+  width: 2px;
+  background: rgba(71, 85, 105, 0.4);
+  margin-top: 6px;
+  min-height: 32px;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+
+.exp-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 22px 24px 24px;
+  margin-bottom: 20px;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.exp-card:hover {
+  border-color: rgb(16 185 129);
+  transform: translateX(3px);
+}
+
+/* ── Card header ─────────────────────────────────────────── */
+
+.exp-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.exp-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.exp-card__role {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.2px;
+  transition: color 0.3s ease;
+}
+
+.exp-card:hover .exp-card__role {
+  color: rgb(52, 211, 153);
+}
+
+.exp-card__company {
+  color: rgb(52, 211, 153);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ── Details row ─────────────────────────────────────────── */
+
+.exp-card__details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.exp-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ── Badges ──────────────────────────────────────────────── */
+
+.exp-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 3px 10px;
+}
+
+.exp-badge--current {
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: rgb(52, 211, 153);
+  flex-shrink: 0;
+}
+
+.exp-badge--type {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.54);
+}
+
+/* ── Responsibilities ────────────────────────────────────── */
+
+.exp-card__responsibilities {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.exp-card__responsibility-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.exp-card__responsibility-dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(52, 211, 153, 0.7);
+  margin-top: 7px;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .section {
+    padding: 70px 18px 80px;
+  }
+
+  .exp-card {
+    padding: 18px 18px 20px;
+  }
+
+  .exp-card:hover {
+    transform: none;
+  }
+
+  .exp-card__header {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

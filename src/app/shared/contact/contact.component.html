@@ -1,0 +1,44 @@
+<section id="contact" class="section bg-gradient-to-b from-slate-950 to-slate-900">
+  <div class="container">
+    <h2 class="section-title">{{ title() }}</h2>
+    <div
+      class="w-20 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full mb-16"
+    ></div>
+
+    <div class="contact-grid">
+      <p class="contact-subtitle">{{ subtitle() }}</p>
+
+      <!-- Email + Phone -->
+      <div class="contact-primary" aria-label="Primary contact information">
+        <a
+          *ngFor="let contact of primaryContacts(); trackBy: trackByLabel"
+          [href]="contact.href"
+          [attr.aria-label]="contact.ariaLabel"
+          class="contact-card"
+        >
+          <span class="contact-card__icon" aria-hidden="true">
+            <lucide-icon [img]="contact.icon" [size]="18" color="rgb(52 211 153)"></lucide-icon>
+          </span>
+          <div class="contact-card__body">
+            <span class="contact-card__label">{{ contact.label }}</span>
+            <span class="contact-card__value">{{ contact.value }}</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Social networks (icon only) -->
+      <div class="contact-social" aria-label="Social networks">
+        <a
+          *ngFor="let contact of socialContacts(); trackBy: trackByLabel"
+          [href]="contact.href"
+          [attr.aria-label]="contact.ariaLabel"
+          class="contact-card contact-card--social"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <lucide-icon [img]="contact.icon" [size]="20" color="rgb(52 211 153)"></lucide-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

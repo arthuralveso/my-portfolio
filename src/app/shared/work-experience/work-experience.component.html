@@ -1,0 +1,81 @@
+<section class="section py-20 px-6 bg-slate-950">
+  <div class="container">
+    <h2 class="section-title">{{ title() }}</h2>
+    <div
+      class="w-20 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full mb-16"
+    ></div>
+    <div class="timeline relative">
+      <div
+        class="absolute md:left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-cyan-500 to-transparent hidden md:block"
+      ></div>
+      <div class="timeline-item" *ngFor="let exp of experiences(); trackBy: trackByCompany">
+        <div class="timeline-marker relative">
+          <div class="timeline-dot"></div>
+        </div>
+
+        <div
+          class="exp-card bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 md:p-8"
+        >
+          <div class="exp-card__header">
+            <div class="exp-card__meta">
+              <h3 class="exp-card__role">
+                {{ exp.role }}
+              </h3>
+              <span class="exp-card__company">{{ exp.company }}</span>
+            </div>
+            <span *ngIf="exp.current" class="exp-badge exp-badge--current">Current</span>
+          </div>
+
+          <div class="exp-card__details">
+            <span class="exp-detail">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              {{ exp.duration }}
+            </span>
+            <span class="exp-detail">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              {{ exp.location }}
+            </span>
+            <span class="exp-badge exp-badge--type">{{ exp.type }}</span>
+          </div>
+
+          <ul class="exp-card__responsibilities" aria-label="Responsibilities">
+            <li *ngFor="let item of exp.responsibilities" class="exp-card__responsibility-item">
+              <span class="exp-card__responsibility-dot" aria-hidden="true"></span>
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,128 @@
+.section {
+  padding: 86px 24px 100px;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+}
+
+/* ── Layout ──────────────────────────────────────────────── */
+
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.contact-subtitle {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Primary contacts (email + phone) ────────────────────── */
+
+.contact-primary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 93%;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px 18px;
+  text-decoration: none;
+}
+
+.contact-card:hover {
+  border-color: rgb(52, 211, 153);
+  transition: all 0.2s ease;
+}
+
+.contact-card__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.16);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  lucide-icon {
+    display: flex;
+  }
+}
+
+.contact-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.contact-card__label {
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.contact-card__value {
+  color: rgb(52, 211, 153);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Social contacts (icon-only) ─────────────────────────── */
+
+.contact-social {
+  display: flex;
+  gap: 12px;
+}
+
+.contact-card--social {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 12px;
+
+  lucide-icon {
+    display: flex;
+  }
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+@media (max-width: 760px) {
+  .section {
+    padding: 70px 18px 80px;
+  }
+}
