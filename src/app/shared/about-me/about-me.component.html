@@ -1,12 +1,13 @@
-<section class="section bg-slate-900">
+<section id="about-me" class="section bg-slate-900">
   <div class="container">
-    <h2 class="section-title">{{ title }}</h2>
+    <h2 fadeInUp [delay]="0" class="section-title">{{ title }}</h2>
     <div
+      fadeInUp [delay]="100"
       class="w-20 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full mb-16"
     ></div>
 
     <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="flex justify-center lg:justify-start">
+      <div fadeInUp [delay]="200" class="flex justify-center lg:justify-start">
         <div class="relative">
           <div
             class="absolute inset-0 bg-gradient-to-r from-[color:var(--chart-2)] to-[color:var(--chart-4)] rounded-3xl blur-2xl opacity-20"
@@ -30,7 +31,7 @@
         </div>
       </div>
 
-      <div class="about-content">
+      <div fadeInUp [delay]="400" class="about-content">
         <p class="lead">{{ lead1 }}</p>
         <p class="lead">{{ lead2 }}</p>
 

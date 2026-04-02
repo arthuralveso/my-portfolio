@@ -1,43 +1,38 @@
 <section
+  id="home"
   class="min-h-screen flex items-center justify-center px-6 py-20 bg-gradient-to-b from-slate-950 to-slate-900"
 >
   <div class="max-w-7xl w-full mx-auto">
     <div class="grid lg:grid-cols-2 gap-12 items-center pl-4 pr-4">
       <div class="space-y-6">
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-none">
+        <h1
+          fadeInUp
+          [delay]="0"
+          class="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-none"
+        >
           Hi, I'm {{ name }}
         </h1>
 
-        <div class="text-xl md:text-2xl text-[color:var(--chart-2)] font-medium">
+        <div
+          fadeInUp
+          [delay]="200"
+          class="text-xl md:text-2xl text-[color:var(--chart-2)] font-medium"
+        >
           {{ roleLeft }} | {{ roleRight }}
         </div>
 
-        <p class="text-lg text-muted-foreground max-w-xl">
+        <p fadeInUp [delay]="400" class="text-lg text-muted-foreground max-w-xl">
           {{ description }}
         </p>
 
-        <div class="flex flex-wrap gap-4 pt-4">
+        <div fadeInUp [delay]="600" class="flex flex-wrap gap-4 pt-4">
           <button
             type="button"
             (click)="scrollToSection('work-experience')"
-            class="bg-[color:var(--chart-2)] hover:bg-[color:color-mix(in_srgb,var(--chart-2),#000_20%)] text-[color:var(--primary)] shadow-lg shadow-[color:var(--chart-2)]/20 transition-all duration-300 hover:shadow-[color:var(--chart-2)]/40 px-5 py-3 rounded-full font-bold text-sm inline-flex items-center"
+            class="bg-emerald-600 hover:bg-emerald-700 text-[color:var(--primary)] transition-colors duration-300 px-5 py-3 rounded-full font-bold text-sm inline-flex items-center"
           >
             View Work
-            <svg
-              class="ml-2 h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M5 12h12M13 5l7 7-7 7"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <lucide-icon [img]="ArrowRight" [size]="18" class="ml-2" aria-hidden="true"></lucide-icon>
           </button>
 
           <button
@@ -45,34 +40,13 @@
             (click)="scrollToSection('contact')"
             class="border border-slate-600 text-muted-foreground hover:bg-slate-800 hover:text-foreground transition-all duration-300 px-5 py-3 rounded-full font-bold text-sm inline-flex items-center"
           >
-            <svg
-              class="mr-2 h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M14 2v6h6"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <lucide-icon [img]="Mail" [size]="18" class="mr-2" aria-hidden="true"></lucide-icon>
             Contact Me
           </button>
         </div>
       </div>
 
-      <div class="flex justify-center lg:justify-end">
+      <div fadeInUp [delay]="300" class="flex justify-center lg:justify-end">
         <div class="relative">
           <div
             class="absolute inset-0 bg-gradient-to-r from-[color:var(--chart-2)] to-[color:var(--chart-4)] rounded-3xl blur-2xl opacity-20"

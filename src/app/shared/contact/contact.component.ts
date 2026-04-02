@@ -1,12 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, Mail, Phone, Linkedin, Github } from 'lucide-angular';
+import { FadeInUpDirective } from '../directives/fade-in-up.directive';
 import { ContactInfo } from '../interfaces/contact.interface';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule, FadeInUpDirective],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })

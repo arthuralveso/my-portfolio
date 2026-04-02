@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FadeInUpDirective } from '../directives/fade-in-up.directive';
 
 type Technology = {
   name: string;
@@ -11,7 +12,7 @@ type Technology = {
 @Component({
   selector: 'app-technologies',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FadeInUpDirective],
   templateUrl: './technologies.component.html',
   styleUrl: './technologies.component.css',
 })

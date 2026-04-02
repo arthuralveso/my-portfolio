@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, Code2, Rocket, Users } from 'lucide-angular';
 import { Component, Input } from '@angular/core';
+import { FadeInUpDirective } from '../directives/fade-in-up.directive';
 
 @Component({
   selector: 'app-about-me',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule, FadeInUpDirective],
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.css',
 })

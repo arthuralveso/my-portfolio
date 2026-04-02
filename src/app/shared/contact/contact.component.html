@@ -1,11 +1,12 @@
 <section id="contact" class="section bg-gradient-to-b from-slate-950 to-slate-900">
   <div class="container">
-    <h2 class="section-title">{{ title() }}</h2>
+    <h2 fadeInUp [delay]="0" class="section-title">{{ title() }}</h2>
     <div
+      fadeInUp [delay]="100"
       class="w-20 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full mb-16"
     ></div>
 
-    <div class="contact-grid">
+    <div fadeInUp [delay]="200" class="contact-grid">
       <p class="contact-subtitle">{{ subtitle() }}</p>
 
       <!-- Email + Phone -->

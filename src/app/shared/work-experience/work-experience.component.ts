@@ -1,11 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Experience } from '../interfaces/work-experience.interface';
+import { FadeInUpDirective } from '../directives/fade-in-up.directive';
 
 @Component({
   selector: 'app-work-experience',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FadeInUpDirective],
   templateUrl: './work-experience.component.html',
   styleUrl: './work-experience.component.css',
 })

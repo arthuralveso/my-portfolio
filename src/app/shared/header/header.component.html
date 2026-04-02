@@ -1,0 +1,25 @@
+<header class="header" [class.header--scrolled]="isScrolled">
+  <div class="header__inner">
+    <span class="header__logo">
+      <lucide-icon
+        [img]="Code2"
+        [size]="18"
+        color="rgb(52, 211, 153)"
+        aria-hidden="true"
+      ></lucide-icon>
+      Arthur Alves
+    </span>
+
+    <nav class="header__nav" aria-label="Main navigation">
+      <button
+        *ngFor="let item of navItems"
+        type="button"
+        class="nav-item"
+        [class.nav-item--active]="activeSection === item.id"
+        (click)="scrollTo(item.id)"
+      >
+        {{ item.label }}
+      </button>
+    </nav>
+  </div>
+</header>

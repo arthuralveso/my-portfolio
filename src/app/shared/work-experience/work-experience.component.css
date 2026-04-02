@@ -132,7 +132,7 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  color: rgba(255, 255, 255, 0.46);
+  color: #c2c2c2;
   font-size: 12px;
   font-weight: 500;
 }
@@ -159,7 +159,7 @@
 .exp-badge--type {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.54);
+  color: #c2c2c2;
 }
 
 /* ── Responsibilities ────────────────────────────────────── */
@@ -177,7 +177,7 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  color: rgba(255, 255, 255, 0.62);
+  color: #c2c2c2;
   font-size: 13px;
   line-height: 1.65;
 }
