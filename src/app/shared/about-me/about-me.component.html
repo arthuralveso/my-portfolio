@@ -1,4 +1,4 @@
-<section id="about-me" class="section bg-gray-900">
+<section id="about-me" class="section bg-slate-900">
   <div class="container">
     <h2 fadeInUp [delay]="0" class="section-title">{{ title }}</h2>
     <div
@@ -8,24 +8,27 @@
     ></div>
 
     <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div fadeInUp [delay]="200" class="ab-metrics">
-        <div
-          *ngFor="let metric of metrics"
-          class="ab-card bg-slate-800/50 border border-slate-700/50"
-          [ngClass]="metric.colorClass"
-        >
-          <div class="ab-card-icon">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              [innerHTML]="metric.svgContent"
-            ></svg>
+      <div fadeInUp [delay]="200" class="flex justify-center lg:justify-start">
+        <div class="relative">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-[color:var(--chart-2)] to-[color:var(--chart-4)] rounded-3xl blur-2xl opacity-20"
+          ></div>
+
+          <div
+            class="relative bg-[color:rgba(15,23,42,0.5)] backdrop-blur-sm p-2 rounded-3xl border border-[color:rgba(71,85,105,0.5)] shadow-2xl"
+          >
+            <ng-container *ngIf="aboutImageUrl; else fallback">
+              <img
+                class="relative about-image rounded-2xl"
+                [src]="aboutImageUrl"
+                alt="About image"
+                loading="lazy"
+              />
+            </ng-container>
+            <ng-template #fallback>
+              <div class="about-image-fallback"></div>
+            </ng-template>
           </div>
-          <div class="ab-card-num">{{ metric.value }}</div>
-          <div class="ab-card-label">{{ metric.label }}</div>
         </div>
       </div>
 
