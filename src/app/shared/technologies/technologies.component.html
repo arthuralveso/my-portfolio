@@ -1,4 +1,4 @@
-<section id="technologies" class="section bg-gradient-to-b from-slate-900 to-slate-950">
+<section id="technologies" class="section bg-gradient-to-b from-gray-900 to-gray-950">
   <div class="container text-center">
     <h2 fadeInUp [delay]="0" class="text-4xl md:text-5xl font-bold text-white mb-4">{{ title }}</h2>
     <div
@@ -11,7 +11,10 @@
     </p>
 
     <div fadeInUp [delay]="300" class="tech-grid" aria-label="Technologies and tools">
-      <div class="tech-card" *ngFor="let tech of technologies; trackBy: trackByName">
+      <div
+        class="tech-card bg-slate-800/50 border-slate-700/50"
+        *ngFor="let tech of technologies; trackBy: trackByName"
+      >
         <div class="tech-icon" aria-hidden="true" [style.backgroundColor]="tech.bg">
           @if (tech.svgUrl) {
             <img [src]="tech.svgUrl" style="width: 2rem; height: 2rem" />

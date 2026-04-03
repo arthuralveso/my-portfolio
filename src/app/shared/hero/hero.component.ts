@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { FadeInUpDirective } from '../directives/fade-in-up.directive';
 import { LucideAngularModule, ArrowRight, Mail } from 'lucide-angular';
 
@@ -11,6 +11,13 @@ import { LucideAngularModule, ArrowRight, Mail } from 'lucide-angular';
   styleUrl: './hero.component.css',
 })
 export class HeroComponent {
+  scrollHintOpacity = 1;
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    const threshold = 200;
+    this.scrollHintOpacity = Math.max(0, 1 - window.scrollY / threshold);
+  }
   /**
    * URL da imagem do avatar.
    * Por padrão, usa o arquivo `public/avatar.jpg`.

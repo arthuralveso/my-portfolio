@@ -1,8 +1,9 @@
-<section id="contact" class="section bg-gradient-to-b from-slate-950 to-slate-900">
+<section id="contact" class="section bg-gradient-to-b from-gray-950 to-gray-900">
   <div class="container">
     <h2 fadeInUp [delay]="0" class="section-title">{{ title() }}</h2>
     <div
-      fadeInUp [delay]="100"
+      fadeInUp
+      [delay]="100"
       class="w-20 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full mb-16"
     ></div>
 
@@ -15,7 +16,7 @@
           *ngFor="let contact of primaryContacts(); trackBy: trackByLabel"
           [href]="contact.href"
           [attr.aria-label]="contact.ariaLabel"
-          class="contact-card"
+          class="contact-card bg-slate-900 border border-slate-700/50"
         >
           <span class="contact-card__icon" aria-hidden="true">
             <lucide-icon [img]="contact.icon" [size]="18" color="rgb(52 211 153)"></lucide-icon>
@@ -33,7 +34,7 @@
           *ngFor="let contact of socialContacts(); trackBy: trackByLabel"
           [href]="contact.href"
           [attr.aria-label]="contact.ariaLabel"
-          class="contact-card contact-card--social"
+          class="contact-card contact-card--social bg-slate-900 border border-slate-700/50"
           target="_blank"
           rel="noopener noreferrer"
         >
