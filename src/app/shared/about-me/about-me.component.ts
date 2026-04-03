@@ -11,7 +11,7 @@ import { FadeInUpDirective } from '../directives/fade-in-up.directive';
   styleUrl: './about-me.component.css',
 })
 export class AboutMeComponent {
-  @Input({ required: false }) public aboutImageUrl: string = '/about-me.jpg';
+  @Input({ required: false }) public aboutImageUrl: string = '/assets/avatar.jpg';
   title = 'About Me';
 
   readonly Code2 = Code2;

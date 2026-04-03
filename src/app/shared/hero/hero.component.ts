@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FadeInUpDirective } from '../directives/fade-in-up.directive';
-import { LucideAngularModule, ArrowRight, Mail } from 'lucide-angular';
+import { LucideAngularModule, ArrowRight, Mail, Download } from 'lucide-angular';
 
 type TokenClass =
   | 'kw' // keywords: export, class, true
@@ -32,7 +32,7 @@ const CODE_LINES: CodeLine[] = [
   ],
   [
     ['kw', 'export class '],
-    ['dec', 'ArthurAlvesPortfolioComponent'],
+    ['dec', 'ArthurAlvesComponent'],
     ['pu', ' {'],
   ],
   [['cm', '  // 5+ years shaping Angular at scale']],
@@ -107,6 +107,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
 
   readonly ArrowRight = ArrowRight;
   readonly Mail = Mail;
+  readonly Download = Download;
 
   public readonly name = 'Arthur Alves';
   public readonly description =
@@ -123,7 +124,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.type(), 400);
+    setTimeout(() => this.type(), 800);
   }
 
   ngOnDestroy(): void {

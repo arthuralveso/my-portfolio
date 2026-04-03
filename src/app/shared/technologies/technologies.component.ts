@@ -41,16 +41,16 @@ export class TechnologiesComponent {
     { name: 'Jest', icon: 'devicon-jest-plain', bg: 'rgba(192, 47, 47, 0.15)' },
     { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-plain', bg: 'rgba(6, 182, 212, 0.15)' },
     { name: 'Figma', icon: 'devicon-figma-plain', bg: 'rgba(242, 78, 30, 0.15)' },
+    {
+      name: 'Storybook',
+      icon: 'devicon-storybook-plain',
+      bg: 'rgba(31, 136, 61, 0.15)',
+    },
     { name: 'Git', icon: 'devicon-git-plain', bg: 'rgba(240, 80, 50, 0.15)' },
     {
       name: 'AWS',
       icon: 'devicon-amazonwebservices-plain-wordmark',
       bg: 'rgba(255, 153, 0, 0.15)',
-    },
-    {
-      name: 'CI/CD',
-      icon: 'devicon-githubactions-plain',
-      bg: 'rgba(31, 136, 61, 0.15)',
     },
   ];
 
