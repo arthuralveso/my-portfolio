@@ -1,6 +1,6 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, Code2 } from 'lucide-angular';
+import { LucideAngularModule, Code2, Menu, X } from 'lucide-angular';
 
 interface NavItem {
   label: string;
@@ -17,8 +17,11 @@ interface NavItem {
 export class HeaderComponent implements OnInit, OnDestroy {
   activeSection = 'home';
   isScrolled = false;
+  menuOpen = false;
 
   readonly Code2 = Code2;
+  readonly Menu = Menu;
+  readonly X = X;
 
   readonly navItems: NavItem[] = [
     { label: 'Home', id: 'home' },
@@ -33,6 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @HostListener('window:scroll')
   onScroll(): void {
     this.isScrolled = window.scrollY > 20;
+    if (this.menuOpen) this.menuOpen = false;
   }
 
   ngOnInit(): void {
@@ -57,7 +61,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.observer?.disconnect();
   }
 
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
   scrollTo(id: string): void {
+    this.menuOpen = false;
     if (id === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;

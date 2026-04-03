@@ -19,17 +19,24 @@ export class AboutMeComponent {
   readonly Users = Users;
 
   features = [
-    { icon: Code2, text: '5+ years of frontend development experience' },
-    { icon: Rocket, text: 'Focus on Angular, TypeScript, and modern web architecture' },
-    { icon: Users, text: 'Passionate about clean code and user-centric design' },
+    {
+      icon: Code2,
+      text: 'Expert in Angular (2–20), Signals, Standalone Components and micro frontends',
+    },
+    {
+      icon: Rocket,
+      text: 'Led Angular 18 migrations across high-scale financial platforms, cutting load time by 30% and maintenance overhead by 45%',
+    },
+    {
+      icon: Users,
+      text: 'WCAG 2.1 accessibility advocate, ensuring inclusive UI across all delivered products',
+    },
   ];
 
-  lead1 = `I'm a frontend developer with a deep passion for building robust and
-    scalable web applications. With over 5 years of experience specializing in
-    Angular, I've had the privilege of working on diverse projects ranging from
-    enterprise solutions to innovative startups.`;
+  lead1 = `Senior Frontend Engineer with 5+ years specializing in Angular for high-scale financial platforms.
+    Led Angular 18 migrations and micro frontend architectures at at one of 
+Latin America's largest investment banks.`;
 
-  lead2 = `My approach combines technical expertise with a keen eye for design,
-    ensuring that every application I build is not only performant but also
-    delivers an exceptional user experience.`;
+  lead2 = `Specialist in modern Angular (Signals, Standalone Components), RxJS, NgRx, and WCAG-compliant accessibility.
+    Proven track record delivering performance optimizations and design system contributions in banking ecosystems.`;
 }

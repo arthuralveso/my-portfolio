@@ -1,4 +1,4 @@
-<header class="header" [class.header--scrolled]="isScrolled">
+<header class="header" [class.header--scrolled]="isScrolled || menuOpen">
   <div class="header__inner">
     <span class="header__logo">
       <lucide-icon
@@ -10,6 +10,7 @@
       Arthur Alves
     </span>
 
+    <!-- Desktop nav -->
     <nav class="header__nav" aria-label="Main navigation">
       <button
         *ngFor="let item of navItems"
@@ -21,5 +22,33 @@
         {{ item.label }}
       </button>
     </nav>
+
+    <!-- Hamburger button (mobile only) -->
+    <button
+      type="button"
+      class="hamburger"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen"
+      aria-label="Toggle menu"
+    >
+      <lucide-icon [img]="menuOpen ? X : Menu" [size]="22" color="#ffffff"></lucide-icon>
+    </button>
   </div>
+
+  <!-- Mobile menu -->
+  <nav
+    class="mobile-menu"
+    [class.mobile-menu--open]="menuOpen"
+    aria-label="Mobile navigation"
+  >
+    <button
+      *ngFor="let item of navItems"
+      type="button"
+      class="mobile-nav-item"
+      [class.mobile-nav-item--active]="activeSection === item.id"
+      (click)="scrollTo(item.id)"
+    >
+      {{ item.label }}
+    </button>
+  </nav>
 </header>
