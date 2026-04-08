@@ -1,6 +1,6 @@
 <section id="work-experience" class="section py-20 px-6 bg-gray-950">
   <div class="container">
-    <h2 fadeInUp [delay]="0" class="section-title">{{ title() }}</h2>
+    <h2 fadeInUp [delay]="0" class="section-title">{{ t().workExperience.title }}</h2>
     <div
       fadeInUp
       [delay]="100"
@@ -32,7 +32,9 @@
               </h3>
               <span class="exp-card__company">{{ exp.company }}</span>
             </div>
-            <span *ngIf="exp.current" class="exp-badge exp-badge--current">Current</span>
+            <span *ngIf="exp.current" class="exp-badge exp-badge--current">{{
+              t().workExperience.current
+            }}</span>
           </div>
 
           <div class="exp-card__details">

@@ -29,7 +29,7 @@
 
 .contact-subtitle {
   color: #c2c2c2;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.75;
   margin: 0;
   text-align: center;
@@ -94,7 +94,7 @@
 
 .contact-card__value {
   color: rgb(52, 211, 153);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;

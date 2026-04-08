@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FadeInUpDirective } from '../directives/fade-in-up.directive';
+import { LanguageService } from '../services/language.service';
 
 type Technology = {
   name: string;
@@ -17,8 +18,9 @@ type Technology = {
   styleUrl: './technologies.component.css',
 })
 export class TechnologiesComponent {
-  public readonly title = 'Technologies & Tools';
-  public readonly subtitle = 'My core technical stack for building modern web applications';
+  private langService = inject(LanguageService);
+
+  readonly t = this.langService.t;
 
   public readonly technologies: Technology[] = [
     { name: 'TypeScript', icon: 'devicon-typescript-plain', bg: 'rgba(49, 120, 198, 0.15)' },

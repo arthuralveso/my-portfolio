@@ -101,7 +101,7 @@
 
 .exp-card__role {
   color: rgba(255, 255, 255, 0.92);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   margin: 0;
   letter-spacing: -0.2px;
@@ -114,7 +114,7 @@
 
 .exp-card__company {
   color: rgb(52, 211, 153);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -143,7 +143,7 @@
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.3px;
   padding: 3px 10px;
@@ -178,7 +178,7 @@
   align-items: flex-start;
   gap: 10px;
   color: #c2c2c2;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.65;
 }
 

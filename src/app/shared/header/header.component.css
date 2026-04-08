@@ -60,7 +60,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: #c2c2c2;
   padding: 6px 14px;
@@ -91,6 +91,42 @@
 
 .nav-item--active::after {
   width: calc(100% - 28px);
+}
+
+/* ── Actions (lang toggle + hamburger) ───────────────────── */
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+  transition: border-color 0.2s ease;
+}
+
+.lang-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.lang-toggle__sep {
+  opacity: 0.3;
+}
+
+.lang-toggle__opt--active {
+  color: rgb(52, 211, 153);
 }
 
 /* ── Hamburger ────────────────────────────────────────────── */
@@ -132,7 +168,9 @@
   padding: 16px 24px;
   text-align: left;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: color 0.2s ease, background 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
 .mobile-nav-item:last-child {

@@ -12,18 +12,18 @@
           [delay]="0"
           class="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-none"
         >
-          Hi, I'm {{ name }}
+          {{ t().hero.greeting }} {{ name }}
         </h1>
 
         <div fadeInUp [delay]="200" class="role-block">
-          <p class="role-primary text-foreground">Senior Frontend Engineer</p>
-          <p class="role-secondary">& Angular Specialist</p>
+          <p class="role-primary text-foreground">{{ t().hero.rolePrimary }}</p>
+          <p class="role-secondary">{{ t().hero.roleSecondary }}</p>
         </div>
 
         <div class="role-divider"></div>
 
         <p fadeInUp [delay]="400" class="hero-body text-muted-foreground">
-          {{ description }}
+          {{ t().hero.description }}
         </p>
 
         <div fadeInUp [delay]="600" class="flex flex-wrap gap-4 pt-2">
@@ -32,7 +32,7 @@
             (click)="scrollToSection('work-experience')"
             class="bg-emerald-600 hover:bg-emerald-700 text-[color:var(--primary)] transition-colors duration-300 px-5 py-3 rounded-full font-bold text-sm inline-flex items-center"
           >
-            View Work
+            {{ t().hero.viewWork }}
             <lucide-icon
               [img]="ArrowRight"
               [size]="18"
@@ -47,7 +47,7 @@
             class="border border-slate-600 text-muted-foreground hover:bg-slate-800 hover:text-foreground transition-all duration-300 px-5 py-3 rounded-full font-bold text-sm inline-flex items-center"
           >
             <lucide-icon [img]="Mail" [size]="18" class="mr-2" aria-hidden="true"></lucide-icon>
-            Contact Me
+            {{ t().hero.contactMe }}
           </button>
 
           <a
@@ -56,7 +56,7 @@
             class="border border-slate-600 text-muted-foreground hover:bg-slate-800 hover:text-foreground transition-all duration-300 px-5 py-3 rounded-full font-bold text-sm inline-flex items-center"
           >
             <lucide-icon [img]="Download" [size]="18" class="mr-2" aria-hidden="true"></lucide-icon>
-            Resume
+            {{ t().hero.resume }}
           </a>
         </div>
       </div>

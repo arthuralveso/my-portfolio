@@ -4,11 +4,13 @@ import {
   Component,
   ElementRef,
   HostListener,
+  inject,
   OnDestroy,
   ViewChild,
 } from '@angular/core';
 import { FadeInUpDirective } from '../directives/fade-in-up.directive';
 import { LucideAngularModule, ArrowRight, Mail, Download } from 'lucide-angular';
+import { LanguageService } from '../services/language.service';
 
 type TokenClass =
   | 'kw' // keywords: export, class, true
@@ -101,6 +103,8 @@ const CODE_LINES: CodeLine[] = [
   styleUrl: './hero.component.css',
 })
 export class HeroComponent implements AfterViewInit, OnDestroy {
+  private langService = inject(LanguageService);
+
   @ViewChild('codeBlock', { static: false }) codeBlock!: ElementRef<HTMLDivElement>;
 
   scrollHintOpacity = 1;
@@ -109,9 +113,9 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   readonly Mail = Mail;
   readonly Download = Download;
 
+  readonly t = this.langService.t;
+
   public readonly name = 'Arthur Alves';
-  public readonly description =
-    'Building exceptional digital experiences with modern web technologies. Passionate about creating scalable, performant applications that make a difference.';
 
   private lineIndex = 0;
   private charIndex = 0;

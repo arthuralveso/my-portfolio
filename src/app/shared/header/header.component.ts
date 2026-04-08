@@ -1,6 +1,7 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, computed, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, Code2, Menu, X } from 'lucide-angular';
+import { LanguageService } from '../services/language.service';
 
 interface NavItem {
   label: string;
@@ -15,6 +16,8 @@ interface NavItem {
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  private langService = inject(LanguageService);
+
   activeSection = 'home';
   isScrolled = false;
   menuOpen = false;
@@ -23,13 +26,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   readonly Menu = Menu;
   readonly X = X;
 
-  readonly navItems: NavItem[] = [
-    { label: 'Home', id: 'home' },
-    { label: 'About Me', id: 'about-me' },
-    { label: 'Technologies', id: 'technologies' },
-    { label: 'Work', id: 'work-experience' },
-    { label: 'Contact', id: 'contact' },
-  ];
+  readonly lang = this.langService.current;
+  readonly t = this.langService.t;
+
+  readonly navItems = computed<NavItem[]>(() => {
+    const nav = this.t().nav;
+    return [
+      { label: nav.home, id: 'home' },
+      { label: nav.aboutMe, id: 'about-me' },
+      { label: nav.technologies, id: 'technologies' },
+      { label: nav.work, id: 'work-experience' },
+      { label: nav.contact, id: 'contact' },
+    ];
+  });
 
   private observer!: IntersectionObserver;
 
@@ -51,8 +60,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       { threshold: 0.3 },
     );
 
-    this.navItems.forEach((item) => {
-      const el = document.getElementById(item.id);
+    const ids = ['home', 'about-me', 'technologies', 'work-experience', 'contact'];
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
       if (el) this.observer.observe(el);
     });
   }
@@ -63,6 +73,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
+  }
+
+  toggleLang(): void {
+    this.langService.toggle();
   }
 
   scrollTo(id: string): void {
