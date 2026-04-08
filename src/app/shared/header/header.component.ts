@@ -1,4 +1,4 @@
-import { Component, computed, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, computed, ElementRef, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, Code2, Menu, X } from 'lucide-angular';
 import { LanguageService } from '../services/language.service';
@@ -17,6 +17,8 @@ interface NavItem {
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private langService = inject(LanguageService);
+
+  @ViewChild('hamburgerBtn') private hamburgerBtn!: ElementRef<HTMLButtonElement>;
 
   activeSection = 'home';
   isScrolled = false;
@@ -73,6 +75,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
+    if (this.menuOpen) {
+      // Move focus to first mobile nav item when menu opens (WCAG 2.4.3)
+      setTimeout(() => {
+        const firstItem = document.querySelector<HTMLElement>('[data-first-mobile-nav="true"]');
+        firstItem?.focus();
+      }, 50);
+    }
   }
 
   toggleLang(): void {
@@ -80,7 +89,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   scrollTo(id: string): void {
+    const wasOpen = this.menuOpen;
     this.menuOpen = false;
+    // Return focus to hamburger when closing via mobile nav item (WCAG 2.4.3)
+    if (wasOpen) {
+      this.hamburgerBtn?.nativeElement?.focus();
+    }
     if (id === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;

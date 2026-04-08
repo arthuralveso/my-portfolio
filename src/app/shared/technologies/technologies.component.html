@@ -1,6 +1,6 @@
-<section id="technologies" class="section bg-gradient-to-b from-gray-900 to-gray-950">
+<section id="technologies" aria-labelledby="technologies-heading" class="section bg-gradient-to-b from-gray-900 to-gray-950">
   <div class="container text-center">
-    <h2 fadeInUp [delay]="0" class="text-4xl md:text-5xl font-bold text-white mb-4">{{ t().technologies.title }}</h2>
+    <h2 id="technologies-heading" fadeInUp [delay]="0" class="text-4xl md:text-5xl font-bold text-white mb-4">{{ t().technologies.title }}</h2>
     <div
       fadeInUp
       [delay]="100"
@@ -17,7 +17,7 @@
       >
         <div class="tech-icon" aria-hidden="true" [style.backgroundColor]="tech.bg">
           @if (tech.svgUrl) {
-            <img [src]="tech.svgUrl" style="width: 2rem; height: 2rem" />
+            <img [src]="tech.svgUrl" alt="" style="width: 2rem; height: 2rem" />
           } @else {
             <i [class]="tech.icon + ' colored'" style="font-size: 2rem"></i>
           }

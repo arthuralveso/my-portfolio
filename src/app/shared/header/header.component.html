@@ -1,14 +1,19 @@
 <header class="header" [class.header--scrolled]="isScrolled || menuOpen">
   <div class="header__inner">
-    <span class="header__logo">
+    <button
+      type="button"
+      class="header__logo"
+      (click)="scrollTo('home')"
+      aria-label="Arthur Alves – go to top of page"
+    >
       <lucide-icon
         [img]="Code2"
         [size]="18"
         color="rgb(52, 211, 153)"
         aria-hidden="true"
       ></lucide-icon>
-      Arthur Alves
-    </span>
+      <span>Arthur Alves</span>
+    </button>
 
     <!-- Desktop nav -->
     <nav class="header__nav" aria-label="Main navigation">
@@ -17,6 +22,7 @@
         type="button"
         class="nav-item"
         [class.nav-item--active]="activeSection === item.id"
+        [attr.aria-current]="activeSection === item.id ? 'true' : null"
         (click)="scrollTo(item.id)"
       >
         {{ item.label }}
@@ -25,31 +31,46 @@
 
     <!-- Language toggle + Hamburger -->
     <div class="header__actions">
-      <button type="button" class="lang-toggle" (click)="toggleLang()" [attr.aria-label]="lang() === 'en' ? 'Switch to Portuguese' : 'Mudar para Inglês'">
-        <span [class.lang-toggle__opt--active]="lang() === 'en'">EN</span>
-        <span class="lang-toggle__sep">|</span>
-        <span [class.lang-toggle__opt--active]="lang() === 'pt'">PT</span>
+      <button
+        type="button"
+        class="lang-toggle"
+        (click)="toggleLang()"
+        [attr.aria-label]="lang() === 'en' ? 'Switch to Portuguese' : 'Mudar para Inglês'"
+      >
+        <span [class.lang-toggle__opt--active]="lang() === 'en'" aria-hidden="true">EN</span>
+        <span class="lang-toggle__sep" aria-hidden="true">|</span>
+        <span [class.lang-toggle__opt--active]="lang() === 'pt'" aria-hidden="true">PT</span>
       </button>
 
       <button
+        #hamburgerBtn
         type="button"
         class="hamburger"
         (click)="toggleMenu()"
         [attr.aria-expanded]="menuOpen"
-        aria-label="Toggle menu"
+        [attr.aria-controls]="'mobile-nav'"
+        [attr.aria-label]="menuOpen ? 'Close navigation menu' : 'Open navigation menu'"
       >
-        <lucide-icon [img]="menuOpen ? X : Menu" [size]="22" color="#ffffff"></lucide-icon>
+        <lucide-icon [img]="menuOpen ? X : Menu" [size]="22" color="#ffffff" aria-hidden="true"></lucide-icon>
       </button>
     </div>
   </div>
 
   <!-- Mobile menu -->
-  <nav class="mobile-menu" [class.mobile-menu--open]="menuOpen" aria-label="Mobile navigation">
+  <nav
+    id="mobile-nav"
+    class="mobile-menu"
+    [class.mobile-menu--open]="menuOpen"
+    [attr.aria-hidden]="!menuOpen"
+    aria-label="Mobile navigation"
+  >
     <button
-      *ngFor="let item of navItems()"
+      *ngFor="let item of navItems(); let first = first"
       type="button"
       class="mobile-nav-item"
       [class.mobile-nav-item--active]="activeSection === item.id"
+      [attr.aria-current]="activeSection === item.id ? 'true' : null"
+      [attr.data-first-mobile-nav]="first ? 'true' : null"
       (click)="scrollTo(item.id)"
     >
       {{ item.label }}

@@ -1,6 +1,6 @@
-<section id="contact" class="section bg-gradient-to-b from-gray-950 to-gray-900">
+<section id="contact" aria-labelledby="contact-heading" class="section bg-gradient-to-b from-gray-950 to-gray-900">
   <div class="container">
-    <h2 fadeInUp [delay]="0" class="section-title">{{ t().contact.title }}</h2>
+    <h2 id="contact-heading" fadeInUp [delay]="0" class="section-title">{{ t().contact.title }}</h2>
     <div
       fadeInUp
       [delay]="100"
@@ -38,7 +38,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          <lucide-icon [img]="contact.icon" [size]="20" color="rgb(52 211 153)"></lucide-icon>
+          <lucide-icon [img]="contact.icon" [size]="20" color="rgb(52 211 153)" aria-hidden="true"></lucide-icon>
         </a>
       </div>
     </div>

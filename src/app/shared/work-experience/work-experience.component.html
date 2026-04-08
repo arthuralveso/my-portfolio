@@ -1,29 +1,31 @@
-<section id="work-experience" class="section py-20 px-6 bg-gray-950">
+<section id="work-experience" aria-labelledby="work-experience-heading" class="section py-20 px-6 bg-gray-950">
   <div class="container">
-    <h2 fadeInUp [delay]="0" class="section-title">{{ t().workExperience.title }}</h2>
+    <h2 id="work-experience-heading" fadeInUp [delay]="0" class="section-title">{{ t().workExperience.title }}</h2>
     <div
       fadeInUp
       [delay]="100"
       class="w-20 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full mb-16"
+      aria-hidden="true"
     ></div>
-    <div class="timeline relative">
+    <div class="relative">
       <div
-        fadeInUp
-        [delay]="100"
         class="absolute md:left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-cyan-500 to-transparent hidden md:block"
+        aria-hidden="true"
       ></div>
-      <div
+      <ol class="timeline" aria-label="Work experience timeline">
+      <li
         fadeInUp
         [delay]="200 + i * 150"
         class="timeline-item"
         *ngFor="let exp of experiences(); let i = index; trackBy: trackByCompany"
       >
-        <div class="timeline-marker relative">
+        <div class="timeline-marker relative" aria-hidden="true">
           <div class="timeline-dot"></div>
         </div>
 
-        <div
+        <article
           class="exp-card bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 md:p-8"
+          [attr.aria-label]="exp.role + ' at ' + exp.company"
         >
           <div class="exp-card__header">
             <div class="exp-card__meta">
@@ -85,8 +87,9 @@
               {{ item }}
             </li>
           </ul>
-        </div>
-      </div>
+        </article>
+      </li>
+      </ol>
     </div>
   </div>
 </section>

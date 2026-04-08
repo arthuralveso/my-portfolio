@@ -1,6 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
 
+/* ─── Skip Navigation Link (WCAG 2.4.1) ────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(52, 211, 153);
+  color: #000000;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 0 0 8px 8px;
+  z-index: 10000;
+  text-decoration: none;
+  transition: top 0.2s ease;
+  white-space: nowrap;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ─── Screen-reader-only utility (WCAG 1.1.1) ──────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 * {
   font-family:
     'Syne',
@@ -69,7 +104,43 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Ensure focused children inside an unanimated container are still visible */
+.fade-in-up-init:has(:focus-visible) {
+  opacity: 1;
+  transform: translateY(0);
+}
 /* ─────────────────────────────────────────────────────────────────────────── */
+
+/* ─── Focus-visible styles (WCAG 2.4.7 Focus Visible – Level AA) ─────────── */
+:focus-visible {
+  outline: 2px solid rgb(52, 211, 153);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Main landmark should not show outline when focused programmatically via skip link */
+#main-content:focus {
+  outline: none;
+}
+
+/* ─── Reduced motion (WCAG 2.3.3 / respects prefers-reduced-motion) ─────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in-up-init {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 
 @layer base {
   * {

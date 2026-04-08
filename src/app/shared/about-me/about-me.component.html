@@ -1,6 +1,6 @@
-<section id="about-me" class="section bg-slate-900">
+<section id="about-me" aria-labelledby="about-me-heading" class="section bg-slate-900">
   <div class="container">
-    <h2 fadeInUp [delay]="0" class="section-title">{{ t().aboutMe.title }}</h2>
+    <h2 id="about-me-heading" fadeInUp [delay]="0" class="section-title">{{ t().aboutMe.title }}</h2>
     <div
       fadeInUp
       [delay]="100"
@@ -12,6 +12,7 @@
         <div class="relative">
           <div
             class="absolute inset-0 bg-gradient-to-r from-[color:var(--chart-2)] to-[color:var(--chart-4)] rounded-3xl blur-2xl opacity-20"
+            aria-hidden="true"
           ></div>
 
           <div
@@ -21,7 +22,7 @@
               <img
                 class="relative about-image rounded-2xl"
                 [src]="aboutImageUrl"
-                alt="About image"
+                alt="Arthur Alves, Senior Frontend Engineer"
                 loading="lazy"
               />
             </ng-container>

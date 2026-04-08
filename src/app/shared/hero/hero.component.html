@@ -1,5 +1,6 @@
 <section
   id="home"
+  aria-labelledby="hero-heading"
   class="relative min-h-screen flex items-center justify-center px-6 py-20 bg-gradient-to-b from-gray-950 to-gray-900"
 >
   <div class="max-w-7xl w-full mx-auto">
@@ -8,6 +9,7 @@
         class="space-y-6 flex flex-col items-center justify-center text-center lg:items-start lg:text-left"
       >
         <h1
+          id="hero-heading"
           fadeInUp
           [delay]="0"
           class="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-none"
@@ -66,7 +68,7 @@
         [delay]="300"
         class="flex justify-center lg:justify-end order-first lg:order-last"
       >
-        <div class="code-snippet-wrapper">
+        <div class="code-snippet-wrapper" aria-hidden="true" role="presentation">
           <div class="snippet-badge">
             <span class="snippet-dot"></span>
             Angular · Typescript
@@ -85,7 +87,7 @@
     </div>
   </div>
 
-  <div class="scroll-hint" [style.opacity]="scrollHintOpacity">
+  <div class="scroll-hint" [style.opacity]="scrollHintOpacity" aria-hidden="true">
     <span class="scroll-hint-label">SCROLL</span>
     <div class="scroll-hint-line"></div>
   </div>

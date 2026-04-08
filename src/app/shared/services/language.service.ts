@@ -1,4 +1,5 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { inject, Injectable, signal, computed } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 export type Lang = 'en' | 'pt';
 
@@ -115,8 +116,8 @@ export const TRANSLATIONS = {
         "What's next? Feel free to reach out to me if you're looking for a developer, have a query, or simply want to connect.",
       emailAriaLabel: 'Send email to Arthur',
       phoneAriaLabel: 'Call Arthur',
-      linkedinAriaLabel: "Visit Arthur's LinkedIn profile",
-      githubAriaLabel: "Visit Arthur's GitHub profile",
+      linkedinAriaLabel: "Visit Arthur's LinkedIn profile (opens in new tab)",
+      githubAriaLabel: "Visit Arthur's GitHub profile (opens in new tab)",
     },
     footer: {
       designed: 'Designed and coded with Angular and passion by',
@@ -235,8 +236,8 @@ export const TRANSLATIONS = {
         'E agora? Sinta-se à vontade para entrar em contato se estiver procurando um desenvolvedor, tiver alguma dúvida ou simplesmente quiser se conectar.',
       emailAriaLabel: 'Enviar e-mail para Arthur',
       phoneAriaLabel: 'Ligar para Arthur',
-      linkedinAriaLabel: 'Visitar o perfil do Arthur no LinkedIn',
-      githubAriaLabel: 'Visitar o perfil do Arthur no GitHub',
+      linkedinAriaLabel: 'Visitar o perfil do Arthur no LinkedIn (abre em nova aba)',
+      githubAriaLabel: 'Visitar o perfil do Arthur no GitHub (abre em nova aba)',
     },
     footer: {
       designed: 'Desenhado e construido com Angular e entusiasmo por',
@@ -248,11 +249,15 @@ export type Translations = typeof TRANSLATIONS.en;
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
+  private document = inject(DOCUMENT);
+
   readonly current = signal<Lang>('en');
 
   readonly t = computed(() => TRANSLATIONS[this.current()]);
 
   toggle(): void {
     this.current.update((lang) => (lang === 'en' ? 'pt' : 'en'));
+    // Sync lang attribute on <html> for WCAG 3.1.1 (Language of Page)
+    this.document.documentElement.lang = this.current();
   }
 }
