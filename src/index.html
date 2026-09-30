@@ -1,26 +1,41 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Arthur Alves — Senior Frontend Engineer</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Arthur Alves, Senior Frontend Engineer specialised in Angular and micro frontends. Based in Brazil, working remotely worldwide.">
-  <meta name="theme-color" content="#f3f2ef">
-  <script>
-    // Apply the theme before first paint (saved choice, else OS preference).
-    (function () {
-      var t = null;
-      try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.dataset.theme = t;
-      if (t === 'dark') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#141412');
-    })();
-  </script>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Arthur Alves — Senior Software Engineer</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Arthur Alves, Senior Frontend Engineer specialised in Angular and micro frontends. Based in Brazil, working remotely worldwide."
+    />
+    <meta name="theme-color" content="#f3f2ef" />
+    <script>
+      // Apply the theme before first paint (saved choice, else OS preference).
+      (function () {
+        var t = null;
+        try {
+          t = localStorage.getItem('theme');
+        } catch (e) {}
+        if (t !== 'light' && t !== 'dark')
+          t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+        if (t === 'dark')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#141412');
+      })();
+    </script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="preload"
+      href="/fonts/archivo-latin-wdth-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>
