@@ -1,0 +1,185 @@
+@import '@fontsource/jetbrains-mono/latin-400.css';
+@import '@fontsource/jetbrains-mono/latin-500.css';
+
+/*
+ * Archivo variable (wght 100–900, wdth 62–125%). Declared here instead of importing
+ * @fontsource-variable/archivo/wdth.css so the files keep a stable URL (/fonts/…,
+ * copied by angular.json) and the latin one can be preloaded in index.html.
+ */
+@font-face {
+  font-family: 'Archivo Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url('/fonts/archivo-latin-ext-wdth-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url('/fonts/archivo-latin-wdth-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light;
+  --bg: #f3f2ef;
+  --ink: #0d0d0d;
+  --text: #2a2a2a;
+  --muted: #6f6c64; /* ~4.7:1 on --bg (AA) */
+  --line: #d4d1c8;
+  --chip: #e9e7e1;
+  --photo: #d3d0c7;
+  --ok: #1f8f4e;
+  --pad: clamp(16px, 2.2vw, 32px);
+  /* layout frame: content never gets wider than --max; extra width becomes side columns.
+     Use --gutter (not --pad) for the horizontal padding of every full-width block.
+     The % resolves against each element's own containing block (the viewport here). */
+  --max: 1440px;
+  --gutter: max(var(--pad), calc((100% - var(--max)) / 2 + var(--pad)));
+  --bar-h: 64px;
+  --display: 'Archivo Variable', 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* type scale, shared by every page (Home sets the reference sizes) */
+  --fs-title: clamp(4rem, 17vw, 17rem); /* page mastheads: Work, About, Contact */
+  --fs-display: clamp(3rem, 8.4vw, 5.25rem); /* Home role, case metrics */
+  --fs-display-sm: clamp(2.75rem, 7.4vw, 4.5rem); /* Home name, section headings */
+  --fs-lg: clamp(1.75rem, 3.4vw, 3rem); /* statement, contact values */
+  --fs-md: clamp(1.375rem, 2.4vw, 2rem); /* case titles, companies */
+  --fs-lede: clamp(1rem, 1.5vw, 1.25rem); /* ledes, fact values, stack items */
+  --fs-ui: 0.875rem; /* buttons, menu descriptions */
+  --fs-mono-body: 0.75rem; /* mono running text */
+  --fs-mono: 0.6875rem; /* mono labels, chips, captions: nothing goes below this */
+}
+
+/* set on <html> by the inline script in index.html and by ThemeService */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #141412;
+  --ink: #f1eee6;
+  --text: #d9d5cb;
+  --muted: #9a968b;
+  --line: #33322d;
+  --chip: #201f1c;
+  --photo: #2a2925;
+  --ok: #4fc083;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+/* Home scales as a whole on large screens (16px until ~1930px wide, 28px cap near 3370px).
+   Scoped to the Home route so the other pages keep their current sizing. */
+html:has(app-home) { font-size: clamp(16px, 0.83vw, 28px); }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--display);
+  font-stretch: 100%;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  &.no-scroll { overflow: hidden; }
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, p, figure { margin: 0; }
+img { display: block; max-width: 100%; }
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+::selection { background: var(--ink); color: var(--bg); }
+
+.mono {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: var(--fs-mono);
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* display titles: Archivo 900 at 80% width */
+.display {
+  font-family: var(--display);
+  font-weight: 900;
+  font-stretch: 80%;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+}
+
+/* bold headings inside content (case titles, companies, contact values, facts) */
+.heading {
+  font-family: var(--display);
+  font-weight: 700;
+  font-stretch: 85%;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.chip {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: var(--fs-mono);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  padding: 0.6em 1.05em;
+  border-radius: 999px;
+  color: var(--text);
+  background: var(--chip);
+  border: 1px solid var(--line);
+}
+
+.page {
+  min-height: 100svh;
+  padding: calc(var(--bar-h) + var(--pad)) var(--gutter) var(--pad);
+}
+
+.reveal {
+  display: block;
+  overflow: hidden;
+  > span {
+    display: block;
+    animation: rise 1s var(--ease) both;
+    animation-delay: var(--d, 0s);
+  }
+}
+
+@keyframes rise {
+  from { transform: translateY(105%); }
+  to { transform: none; }
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.fade { animation: fade 0.9s var(--ease) both; animation-delay: var(--d, 0s); }
+
+/* lucide-angular icons: scale with the surrounding font size */
+lucide-icon { display: inline-flex; vertical-align: -0.125em; }
+lucide-icon svg { width: 1em; height: 1em; }
+
+::view-transition-old(root) { animation: 0.25s ease both vt-out; }
+::view-transition-new(root) { animation: 0.5s var(--ease) both vt-in; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-14px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(24px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; transition-duration: 0.01ms !important; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

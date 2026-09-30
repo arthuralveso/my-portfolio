@@ -1,104 +1,38 @@
-import { Component, computed, ElementRef, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LucideAngularModule, Code2, Menu, X } from 'lucide-angular';
-import { LanguageService } from '../services/language.service';
+import { Component, HostListener, effect, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ArrowDown, ArrowUpRight, LucideAngularModule, Moon, Sun } from 'lucide-angular';
+import { filter } from 'rxjs';
 
-interface NavItem {
-  label: string;
-  id: string;
-}
+import { NAV, PROFILE, UI } from '../data/content.data';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [RouterLink, RouterLinkActive, LucideAngularModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+  styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit, OnDestroy {
-  private langService = inject(LanguageService);
+export class HeaderComponent {
+  protected readonly nav = NAV;
+  protected readonly ui = UI;
+  protected readonly profile = PROFILE;
+  protected readonly icons = { ArrowDown, ArrowUpRight, Moon, Sun };
+  protected readonly theme = inject(ThemeService);
 
-  @ViewChild('hamburgerBtn') private hamburgerBtn!: ElementRef<HTMLButtonElement>;
+  protected readonly open = signal(false);
 
-  activeSection = 'home';
-  isScrolled = false;
-  menuOpen = false;
+  constructor() {
+    inject(Router).events
+      .pipe(filter(e => e instanceof NavigationEnd), takeUntilDestroyed())
+      .subscribe(() => this.open.set(false));
 
-  readonly Code2 = Code2;
-  readonly Menu = Menu;
-  readonly X = X;
-
-  readonly lang = this.langService.current;
-  readonly t = this.langService.t;
-
-  readonly navItems = computed<NavItem[]>(() => {
-    const nav = this.t().nav;
-    return [
-      { label: nav.home, id: 'home' },
-      { label: nav.aboutMe, id: 'about-me' },
-      { label: nav.technologies, id: 'technologies' },
-      { label: nav.work, id: 'work-experience' },
-      { label: nav.contact, id: 'contact' },
-    ];
-  });
-
-  private observer!: IntersectionObserver;
-
-  @HostListener('window:scroll')
-  onScroll(): void {
-    this.isScrolled = window.scrollY > 20;
-    if (this.menuOpen) this.menuOpen = false;
+    effect(() => document.body.classList.toggle('no-scroll', this.open()));
   }
 
-  ngOnInit(): void {
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.activeSection = entry.target.id;
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
+  protected toggle(): void { this.open.update(v => !v); }
+  protected close(): void { this.open.set(false); }
 
-    const ids = ['home', 'about-me', 'technologies', 'work-experience', 'contact'];
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) this.observer.observe(el);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.observer?.disconnect();
-  }
-
-  toggleMenu(): void {
-    this.menuOpen = !this.menuOpen;
-    if (this.menuOpen) {
-      // Move focus to first mobile nav item when menu opens (WCAG 2.4.3)
-      setTimeout(() => {
-        const firstItem = document.querySelector<HTMLElement>('[data-first-mobile-nav="true"]');
-        firstItem?.focus();
-      }, 50);
-    }
-  }
-
-  toggleLang(): void {
-    this.langService.toggle();
-  }
-
-  scrollTo(id: string): void {
-    const wasOpen = this.menuOpen;
-    this.menuOpen = false;
-    // Return focus to hamburger when closing via mobile nav item (WCAG 2.4.3)
-    if (wasOpen) {
-      this.hamburgerBtn?.nativeElement?.focus();
-    }
-    if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  @HostListener('document:keydown.escape')
+  protected onEscape(): void { this.close(); }
 }

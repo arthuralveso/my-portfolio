@@ -1,0 +1,44 @@
+<section class="page about">
+  <h1 class="display title">
+    <span class="reveal"
+      ><span>{{ heading }}</span></span
+    >
+  </h1>
+
+  <div class="grid">
+    <figure class="photo fade" style="--d: 0.2s">
+      <img src="/assets/avatar.jpg" width="504" height="468" alt="Arthur Alves" loading="lazy" />
+    </figure>
+
+    <div class="story fade" style="--d: 0.3s">
+      <p class="statement heading">{{ statement }}</p>
+      <p>{{ p1 }}</p>
+      <p>{{ p2 }}</p>
+    </div>
+  </div>
+
+  <dl class="facts fade" style="--d: 0.4s">
+    @for (f of facts; track f.k) {
+      <div>
+        <dt class="mono">{{ f.k }}</dt>
+        <dd class="heading">{{ f.v }}</dd>
+      </div>
+    }
+  </dl>
+
+  <section class="stack" aria-labelledby="stack-h">
+    <h2 id="stack-h" class="display sub">{{ stackHeading }}</h2>
+    <div class="groups">
+      @for (g of stack; track g.group) {
+        <div class="group">
+          <h3 class="mono">{{ g.group }}</h3>
+          <ul>
+            @for (item of g.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </section>
+</section>

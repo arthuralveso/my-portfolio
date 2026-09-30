@@ -1,0 +1,42 @@
+<section class="page contact">
+  <p class="kicker mono fade"><i class="dot"></i>{{ ui.available }}</p>
+
+  <h1 class="display title">
+    <span class="reveal"
+      ><span style="--d: 0.05s">{{ line1 }}</span></span
+    >
+    <span class="reveal"
+      ><span style="--d: 0.15s">{{ line2 }}</span></span
+    >
+  </h1>
+
+  <p class="lede fade" style="--d: 0.3s">{{ lede }}</p>
+
+  <ul class="list fade" style="--d: 0.4s">
+    <li>
+      <span class="mono k">Email</span>
+      <a class="v heading" [href]="'mailto:' + p.email">{{ p.email }}</a>
+      <button class="mono copy" type="button" (click)="copy()">
+        <lucide-icon [img]="copied() ? icons.Check : icons.Copy" />
+        {{ copied() ? ui.copied : ui.copy }}
+      </button>
+    </li>
+    <li>
+      <span class="mono k">LinkedIn</span>
+      <a class="v heading" [href]="p.linkedin" target="_blank" rel="noopener"
+        >/in/arthuralveso91 <lucide-icon [img]="icons.ArrowUpRight"
+      /></a>
+      <span></span>
+    </li>
+    <li>
+      <span class="mono k">{{ phoneLabel }}</span>
+      <a class="v heading" [href]="p.phoneHref">{{ p.phone }}</a>
+      <span></span>
+    </li>
+    <li>
+      <span class="mono k">{{ ui.resume }}</span>
+      <a class="v heading" [href]="p.resume" download>PDF <lucide-icon [img]="icons.Download" /></a>
+      <span></span>
+    </li>
+  </ul>
+</section>

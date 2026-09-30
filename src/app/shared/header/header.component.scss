@@ -1,0 +1,234 @@
+:host {
+  display: block;
+}
+
+.bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: var(--bar-h);
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 16px;
+  transition: color 0.4s var(--ease);
+  &.on-dark {
+    color: var(--bg);
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: start;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-stretch: 85%;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  .mark {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 0.7rem;
+    letter-spacing: 0;
+    transition:
+      background 0.4s var(--ease),
+      color 0.4s var(--ease);
+  }
+}
+.on-dark .brand .mark {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.right {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+}
+
+.resume {
+  display: none;
+  font-size: var(--fs-mono);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 1.125rem;
+}
+
+.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  margin-right: -10px;
+}
+
+.burger {
+  position: relative;
+  width: 24px;
+  height: 14px;
+  i {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: currentColor;
+    transition:
+      transform 0.4s var(--ease),
+      top 0.4s var(--ease),
+      opacity 0.2s;
+  }
+  i:nth-child(1) {
+    top: 0;
+  }
+  i:nth-child(2) {
+    top: 6.25px;
+  }
+  i:nth-child(3) {
+    top: 12.5px;
+  }
+  &.x i:nth-child(1) {
+    top: 6.25px;
+    transform: rotate(45deg);
+  }
+  &.x i:nth-child(2) {
+    opacity: 0;
+  }
+  &.x i:nth-child(3) {
+    top: 6.25px;
+    transform: rotate(-45deg);
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--ink);
+  color: var(--bg);
+  padding: calc(var(--bar-h) + var(--pad)) var(--gutter) var(--pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  clip-path: inset(0 0 100% 0);
+  visibility: hidden;
+  transition:
+    clip-path 0.7s var(--ease),
+    visibility 0s 0.7s;
+  &.open {
+    clip-path: inset(0);
+    visibility: visible;
+    transition: clip-path 0.7s var(--ease);
+  }
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  li {
+    border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent);
+    overflow: hidden;
+    &:last-child {
+      border-bottom: 1px solid color-mix(in srgb, var(--bg) 18%, transparent);
+    }
+  }
+  a {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    align-items: baseline;
+    gap: 4px 12px;
+    padding: clamp(12px, 2.2vh, 20px) 0;
+    transform: translateY(100%);
+    transition:
+      transform 0.7s var(--ease),
+      padding-left 0.4s var(--ease),
+      opacity 0.3s;
+    transition-delay: 0s, 0s, 0s;
+  }
+  .idx {
+    opacity: 0.5;
+  }
+  .label {
+    font-size: clamp(2rem, 5.5vw, 4.5rem);
+  }
+  .desc {
+    grid-column: 2;
+    opacity: 0.6;
+    font-size: var(--fs-ui);
+  }
+  a:hover {
+    padding-left: 16px;
+  }
+  .current .label {
+    opacity: 0.4;
+  }
+}
+.overlay.open .links a {
+  transform: none;
+  transition-delay: calc(0.12s + var(--i, 0) * 0.07s), 0s, 0s;
+}
+.links li:nth-child(1) a {
+  --i: 0;
+}
+.links li:nth-child(2) a {
+  --i: 1;
+}
+.links li:nth-child(3) a {
+  --i: 2;
+}
+.links li:nth-child(4) a {
+  --i: 3;
+}
+
+.menu-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  a {
+    border-bottom: 1px solid transparent;
+    &:hover {
+      border-color: currentColor;
+    }
+  }
+}
+
+@media (min-width: 720px) {
+  .resume {
+    display: inline;
+  }
+  .links a {
+    grid-template-columns: 4rem minmax(0, 1fr) minmax(0, 26ch);
+    align-items: end;
+    .desc {
+      grid-column: 3;
+      text-align: left;
+      padding-bottom: 0.6em;
+    }
+  }
+}
+@media (max-width: 719px) {
+  .brand-name {
+    display: none;
+  }
+}
