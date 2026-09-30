@@ -13,8 +13,9 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: 50% 30%;
-    width: 468px;
-    height: 468px;
+    /* width shrinks with max-width: 100% on phones; height follows the ratio, so it stays round */
+    width: min(468px, 100%);
+    height: auto;
     border-radius: 50%;
   }
 }

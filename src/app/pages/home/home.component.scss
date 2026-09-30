@@ -225,13 +225,15 @@
   .status {
     align-self: flex-start;
   }
-  .blurb {
+  /* the grid rules set align-self: end, which in this column flex pushes blocks to the right */
+  .blurb,
+  .outro,
+  .credit {
     align-self: stretch;
     text-align: left;
   }
   .outro {
     align-items: flex-start;
-    text-align: left;
   }
   .meta {
     justify-content: flex-start;
