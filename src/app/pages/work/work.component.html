@@ -1,0 +1,49 @@
+<section class="page work">
+  <header class="head">
+    <h1 class="display title">
+      <span class="reveal"
+        ><span>{{ heading }}</span></span
+      >
+    </h1>
+    <p class="lede fade" style="--d: 0.3s">{{ lede }}</p>
+  </header>
+
+  <ol class="cases">
+    @for (item of cases; track item.title; let i = $index) {
+      <li class="case fade" [style.--d]="0.15 + i * 0.06 + 's'">
+        <div class="metric">
+          <strong class="display">{{ item.metric }}</strong>
+          <span class="mono">{{ item.metricLabel }}</span>
+        </div>
+        <div class="body">
+          <p class="where mono">0{{ i + 1 }} — {{ item.where }}</p>
+          <h2 class="heading">{{ item.title }}</h2>
+          <p class="text">{{ item.text }}</p>
+          <ul class="tags">
+            @for (tag of item.tags; track tag) {
+              <li class="chip">{{ tag }}</li>
+            }
+          </ul>
+        </div>
+      </li>
+    }
+  </ol>
+
+  <section class="exp" aria-labelledby="exp-h">
+    <h2 id="exp-h" class="display sub">{{ expHeading }}</h2>
+    <ul>
+      @for (job of jobs; track job.company + job.period) {
+        <li class="job">
+          <span class="mono period">{{ job.period }}</span>
+          <span class="company heading"
+            >{{ job.company }}
+            @if (job.client) {
+              <em> <lucide-icon [img]="ArrowRight" /> {{ job.client }}</em>
+            }
+          </span>
+          <span class="role">{{ job.role }}</span>
+        </li>
+      }
+    </ul>
+  </section>
+</section>

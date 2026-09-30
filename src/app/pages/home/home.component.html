@@ -1,11 +1,63 @@
-<div class="page dark">
-  <app-header />
-  <main id="main-content" tabindex="-1">
-    <app-hero />
-    <app-about-me />
-    <app-technologies />
-    <app-work-experience />
-    <app-contact />
-  </main>
-  <app-footer />
-</div>
+<section class="page home">
+  <div class="split">
+    <div class="head">
+      <h1 class="role display">
+        <span class="reveal"
+          ><span style="--d: 0.05s">{{ c.role1 }}</span></span
+        >
+        <span class="reveal"
+          ><span style="--d: 0.15s">{{ c.role2 }}</span></span
+        >
+      </h1>
+
+      <ul class="tags fade" style="--d: 0.35s" aria-label="Focus">
+        @for (tag of c.tags; track tag) {
+          <li class="chip">{{ tag }}</li>
+        }
+      </ul>
+    </div>
+
+    <p class="status mono fade" style="--d: 0.3s"><i class="dot"></i>{{ c.status }}</p>
+
+    <figure class="photo fade" style="--d: 0.25s">
+      <div class="frame">
+        <img
+          src="/assets/avatar.jpg"
+          width="504"
+          height="468"
+          alt="Portrait of Arthur Alves"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption class="caption mono">
+        <lucide-icon class="arrow" [img]="icons.ArrowRight" />
+        <span>{{ c.caption }}</span>
+      </figcaption>
+    </figure>
+
+    <div class="blurb mono fade" style="--d: 0.45s">
+      @for (paragraph of c.blurb; track paragraph) {
+        <p>{{ paragraph }}</p>
+      }
+    </div>
+
+    <div class="outro">
+      <h2 class="name display" aria-label="Arthur Alves">
+        <span class="reveal"><span style="--d: 0.3s">Arthur</span></span>
+        <span class="reveal"><span style="--d: 0.4s">Alves</span></span>
+      </h2>
+
+      <div class="meta mono fade" style="--d: 0.6s">
+        @for (cta of c.ctas; track cta.path) {
+          <a class="cta" [routerLink]="cta.path">
+            {{ cta.label }} <lucide-icon class="arrow" [img]="icons.ArrowUpRight" />
+          </a>
+        }
+      </div>
+
+      <p class="clock mono fade" style="--d: 0.7s">{{ clock() }}</p>
+    </div>
+
+    <p class="credit mono fade" style="--d: 0.6s">{{ c.credit }}</p>
+  </div>
+</section>
