@@ -12,9 +12,14 @@
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 16px;
-  transition: color 0.4s var(--ease);
+  /* opaque so content doesn't scroll under it; iOS Safari also tints its status bar with it */
+  background: var(--bg);
+  transition:
+    color 0.4s var(--ease),
+    background-color 0.4s var(--ease);
   &.on-dark {
     color: var(--bg);
+    background: transparent;
   }
 }
 
@@ -125,7 +130,9 @@
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: var(--ink);
+  /* background only while open: iOS Safari tints the status bar with the color of fixed
+     elements at the top, even hidden ones, which painted a light strip above the header */
+  background: transparent;
   color: var(--bg);
   padding: calc(var(--bar-h) + var(--pad)) var(--gutter) var(--pad);
   display: flex;
@@ -135,8 +142,10 @@
   visibility: hidden;
   transition:
     clip-path 0.7s var(--ease),
-    visibility 0s 0.7s;
+    visibility 0s 0.7s,
+    background-color 0s 0.7s;
   &.open {
+    background: var(--ink);
     clip-path: inset(0);
     visibility: visible;
     transition: clip-path 0.7s var(--ease);
@@ -225,10 +234,5 @@
       text-align: left;
       padding-bottom: 0.6em;
     }
-  }
-}
-@media (max-width: 719px) {
-  .brand-name {
-    display: none;
   }
 }

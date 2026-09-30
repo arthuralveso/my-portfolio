@@ -72,7 +72,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; background: var(--bg); }
 
 /* Home scales as a whole on large screens (16px until ~1930px wide, 28px cap near 3370px).
    Scoped to the Home route so the other pages keep their current sizing. */
