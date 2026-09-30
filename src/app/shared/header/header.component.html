@@ -5,8 +5,8 @@
 
   <div class="right">
     <a class="resume mono" [href]="profile.resume" download
-      >{{ ui.resumePdf }} <lucide-icon [img]="icons.ArrowDown" /></a
-    >
+      >{{ ui.resumePdf }} <lucide-icon [img]="icons.ArrowDown"
+    /></a>
 
     <button
       class="theme-btn"
@@ -46,7 +46,6 @@
           [routerLinkActiveOptions]="{ exact: item.path === '/' }"
           (click)="close()"
         >
-          <span class="idx mono">0{{ i + 1 }}</span>
           <span class="label display">{{ item.label }}</span>
           <span class="desc">{{ item.desc }}</span>
         </a>
